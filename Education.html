@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ahmed | Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0b0f1a;
+      color: white;
+    }
+
+    header {
+      background-color: #0f1c2e;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      position: relative;
+    }
+
+    nav a.active {
+      color: #00ff00;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #00ff00;
+      bottom: -5px;
+      left: 0;
+    }
+
+    section {
+      padding: 40px 50px;
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #444;
+      display: inline-block;
+    }
+
+    .intro-text {
+      margin: 20px 0;
+      font-size: 1.1em;
+      color: #ccc;
+      line-height: 1.8;
+      background-color: #142b45;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 255, 0, 0.1);
+    }
+
+    .filter-buttons {
+      margin: 30px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-buttons button {
+      padding: 10px 20px;
+      background-color: #142b45;
+      color: white;
+      border: 1px solid #00ff00;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background-color: #00ff00;
+      color: #0b0f1a;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+    }
+
+    .cert-card {
+      position: relative;
+      background-color: #142b45;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 255, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3);
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .cert-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .cert-card:hover .cert-overlay {
+      opacity: 1;
+    }
+
+    .cert-overlay span {
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    a.cert-card {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ahmed Mohamed Mostafa</h1>
+    <nav>
+      <a href="Home.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Education.html" class="active">Education</a>
+      <a href="Experience.html">Experience</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Contact.html">Contact</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <section>
+    <div class="section-title">Certificates</div>
+
+    <p class="intro-text">
+      🎓 I'm currently a <strong>Computer Engineering student</strong>, actively learning and practicing in fields like 
+      <strong>Programming Security</strong>, <strong>Operating Systems</strong>, <strong>Networking</strong>, and participating in 
+      <strong>TryHackMe</strong> CTFs.  
+      Below are some of the certifications I’ve obtained during my journey.
+    </p>
+
+    <div class="filter-buttons">
+      <button class="active" onclick="filterCerts(event, 'all')">All</button>
+      <button onclick="filterCerts(event, 'Programming')">Programming</button>
+      <button onclick="filterCerts(event, 'os')">OS</button>
+      <button onclick="filterCerts(event, 'network')">Network</button>
+      <button onclick="filterCerts(event, 'tryhackme')">TryHackMe</button>
+      <button onclick="filterCerts(event, 'udemy')">udemy</button>
+
+    </div>
+
+    <div class="cert-grid">
+
+<!-- Certificate Programming -->
+      <a target="_blank" class="cert-card" data-category="Programming">
+        <img src="img/python.png" alt="Programming Certificate">
+        <div class="cert-overlay">
+          <span>Programming Certificate</span>
+        </div>
+      </a>
+
+<!-- Certificate os-->
+      <a  target="_blank" class="cert-card" data-category="os">
+        <img src="img/red_hat.png" alt="OS Certificate">
+        <div class="cert-overlay">
+          <span>Linux Essentials</span>
+        </div>
+      </a>
+
+<!-- Certificate TryHackMe -->
+      <a href="https://tryhackme.com/p/Amx2" target="_blank" class="cert-card" data-category="tryhackme">
+        <img src="img/THM.png" alt="TryHackMe Certificate">
+        <div class="cert-overlay">
+          <span>TryHackMe: Pre Security  <br>  🔗</span>
+          
+        </div>
+      </a>
+  
+<!-- Certificate na -->
+      <a href="https://www.credly.com/badges/7ce24ba3-ec58-474b-9fb3-381861016b52/public_url" target="_blank" class="cert-card" data-category="network">
+        <img src="img/ccna.png" alt="Network Certificate">
+        <div class="cert-overlay">
+          <span>Networking Fundamentals <br>  🔗</span>
+        </div>
+      </a>
+<!-- Certificate na -->
+      <a href="https://www.credly.com/badges/583ea77d-e20c-4aef-96f3-8de7aa6ee8c4/public_url" target="_blank" class="cert-card" data-category="network">
+        <img src="img/ccna1.png" alt="Network Certificate">
+        <div class="cert-overlay">
+          <span>CCNA Enterprise <br>  🔗 </span>
+        </div>
+      </a>
+ <!-- Certificate na -->
+      <a href="https://www.credly.com/badges/16bee94d-a862-47fa-b772-fd39c13769c7/public_url" target="_blank" class="cert-card" data-category="network">
+        <img src="img/ccna2.png" alt="Network Certificate">
+        <div class="cert-overlay">
+          <span>CCNA SW,R  <br>  🔗</span>
+        </div>
+      </a>
+ <!-- Certificate np -->
+      <a href="https://www.credly.com/badges/96f83eb2-6a78-46b9-8d9c-706be873f4e9/public_url" target="_blank" class="cert-card" data-category="network">
+        <img src="img/ccnp .png" alt="Network Certificate">
+        <div class="cert-overlay">
+          <span>CCNP Enterprise  <br>  🔗 </span>
+        </div>
+      </a>
+<!-- Certificate udemy -->
+           <a  target="_blank" class="cert-card" data-category="udemy">
+        <img src="img/redteam.png" alt="udemy">
+        <div class="cert-overlay">
+          <span>Red Teaming  </span>
+        </div>
+      </a>
+
+
+
+  </div>
+  </section>
+  <script>
+    function filterCerts(event, category) {
+      const cards = document.querySelectorAll('.cert-card');
+      document.querySelectorAll('.filter-buttons button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

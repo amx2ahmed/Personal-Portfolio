@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed | Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      color: rgb(0, 0, 0);
+      overflow: auto; 
+    }
+
+    video.background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      z-index: -1;
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      font-size: 4.5em;
+      text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0;
+      transition: transform 0.3s ease;
+    }
+
+    h1:hover {
+      transform: scale(1.05);
+    }
+
+    .typing-container {
+      font-size: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .static-text {
+      color: white;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .typing {
+      color: #00ff00;
+      border-right: 1px solid #00ff00;
+      padding-right: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-shadow: 0 0 50px #00ff00, 0 0 100px #00ff00, 0 0 200px #00ff00;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+      100% { transform: translate(0); }
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      font-size: 2.2em;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a.active {
+      color: #00ff00;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #00ff00;
+    }
+
+    nav a:hover {
+      color: #00ff00;
+    }
+
+    .socials {
+      margin-top: 30px;
+    }
+
+    .socials a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5em;
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover {
+      color: #00ff00;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Video -->
+  <video class="background" autoplay muted loop playsinline>
+    <source src="v2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay Content -->
+  <div class="overlay">
+    <h1>Ahmed Mohamed Mostafa</h1>
+    <div class="typing-container">
+      <span class="static-text">I'm</span>
+      <span class="typing" id="typewriter"></span>
+    </div>
+
+    <nav>
+      <a href="Home.html" class="active">Home</a>
+      <a href="About.html">About</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Contact.html">Contact</a>
+           
+      <a href="cv.html">cv</a>
+      <a href="Education.html">Education</a>
+      <a href="Experience.html">Experience</a>
+
+    </nav>
+
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/ahmed-mohamed-59845428a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/amx2ahmed"><i class="fab fa-github"></i></a>
+      <a href="mailto:www.ahmedamx2@gmail.com "><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <!-- Typewriter Effect Script -->
+  <script>
+    const text = ["Cybersecurity enthusiast", "Innovator", "Hacker", "CTF competitor"];
+    let count = 0;
+    let index = 0;
+    let isDeleting = false;
+    const speed = 100;
+    const deleteSpeed = 50;
+    const pause = 1500;
+    const target = document.getElementById('typewriter');
+
+    function typeEffect() {
+      const current = text[count];
+
+      if (!isDeleting) {
+        target.textContent = current.slice(0, ++index);
+        if (index === current.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, pause);
+        } else {
+          setTimeout(typeEffect, speed);
+        }
+      } else {
+        target.textContent = current.slice(0, --index);
+        if (index === 0) {
+          isDeleting = false;
+          count = (count + 1) % text.length;
+          setTimeout(typeEffect, 300);
+        } else {
+          setTimeout(typeEffect, deleteSpeed);
+        }
+      }
+    }
+
+    typeEffect();
+  </script>
+</body>
+</html>

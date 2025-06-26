@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed | Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+     font-family: 'Orbitron', sans-serif;
+     color: white;
+       overflow: auto; 
+    }
+    video.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: -1;
+}
+
+
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    .typing-container {
+      font-size: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .static-text {
+      color: white;
+      margin-right: 5px;
+    }
+
+    .typing {
+      color: limegreen;
+      border-right: 2px solid limegreen;
+      padding-right: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: limegreen;
+    }
+
+    .socials {
+      margin-top: 30px;
+    }
+
+    .socials a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5em;
+    }
+
+    .socials a:hover {
+      color: limegreen;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background video -->
+     
+   <video class="background" autoplay muted loop playsinline>
+   <source src="v2.mp4" type="video/mp4">
+    </video>
+
+  <div class="overlay">
+    <h1>Ahmed Mohamed Mostafa</h1> 
+    <div class="typing-container">
+      <span class="static-text">I'm</span>
+      <span class="typing" id="typewriter"></span>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/ahmed-mohamed-59845428a/"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <script>
+    const text = ["Cybersecurity enthusiast", "Innovator", "Hacker", "CTF competitor"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+
+    (function type() {
+      if (count === text.length) {
+        count = 0;
+      }
+      currentText = text[count];
+      letter = currentText.slice(0, ++index);
+
+      document.getElementById('typewriter').textContent = letter;
+      if (letter.length === currentText.length) {
+        setTimeout(() => {
+          setTimeout(() => {
+            count++;
+            index = 0;
+            type();
+          }, 1500);
+          deleteText();
+        }, 1000);
+      } else {
+        setTimeout(type, 100);
+      }
+    })();
+
+    function deleteText() {
+      let textContent = document.getElementById('typewriter').textContent;
+      if (textContent.length > 0) {
+        document.getElementById('typewriter').textContent = textContent.slice(0, -1);
+        setTimeout(deleteText, 50);
+      }
+    }
+  </script>
+</body>
+
+</html>

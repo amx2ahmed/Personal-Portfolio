@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed | Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      background-color: #0b0f1a;
+      overflow: auto;
+    }
+
+    header {
+      background-color: #0f1c2e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 50px;
+    }
+
+    header h1 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #00ff00;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #00ff00;
+    }
+
+    .contact-section {
+      padding: 50px;
+    }
+
+    .contact-title {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #444;
+      display: inline-block;
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .contact-card {
+      background-color: #142b45;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-card:hover {
+      background-color: #1a3a5f;
+    }
+
+    .contact-icon {
+      font-size: 2em;
+      background-color: #2b3f58;
+      padding: 10px;
+      border-radius: 50%;
+      color: white;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-info strong {
+      color: #00ff00;
+      font-size: 1.2em;
+    }
+
+    .contact-info span {
+      color: #ccc;
+      font-size: 0.9em;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Ahmed Mohamed Mostafa</h1>
+    <nav>
+      <a href="Home.html" >Home</a>
+      <a href="About.html">About</a>
+      <a href="Education.html">Education</a>
+      <a href="Experience.html">Experience</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Contact.html" class="active">Contact</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <div class="contact-title">Contact</div>
+    <div class="contact-grid">
+
+      <a href="https://www.linkedin.com/in/ahmed-mohamed-59845428a/" class="contact-link" target="_blank">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div class="contact-info">
+            <strong>LinkedIn</strong>
+            <span>Ahmed Mohamed</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="mailto:www.ahmedamx2@gmail.com" class="contact-link">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-info">
+            <strong>Email</strong>
+            <span>www.ahmedamx2@gmail.com</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://tryhackme.com/p/Amx2" class="contact-link" target="_blank">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-terminal"></i></div>
+          <div class="contact-info">
+            <strong>TryHackMe</strong>
+            <span>ِAmx2</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</body>
+</html>

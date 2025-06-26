@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed | Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      background-color: #0b0f1a;
+      overflow: auto;
+    }
+
+    header {
+      background-color: #0f1c2e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 50px;
+    }
+
+    header h1 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+
+    nav a.active {
+      color: #00ff00;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #00ff00;
+    }
+
+    nav a:hover {
+      color: #00ff00;
+    }
+
+    section {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #444;
+      color: white;
+    }
+
+    .about-box {
+      background-color: #11182a;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2);
+      padding: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      perspective: 1000px;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .about-box:hover {
+      transform: rotateY(2deg) rotateX(2deg);
+      box-shadow: 0 20px 40px rgba(0, 255, 0, 0.3);
+    }
+
+    .about-content {
+      line-height: 1.7;
+      font-size: 1em;
+      color: #ccc;
+    }
+
+    .info-list {
+      margin-top: 20px;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .info-list strong {
+      color: #00ff00;
+    }
+
+    .interests {
+      margin-top: 30px;
+      color: #ccc;
+    }
+
+    .interests ul {
+      padding-left: 20px;
+    }
+
+    .interests li {
+      list-style: disc;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Ahmed Mohamed Mostafa</h1>
+    <nav>
+      <a href="Home.html">Home</a>
+      <a href="About.html" class="active">About</a>
+      <a href="Education.html">Education</a>
+      <a href="Experience.html">Experience</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Contact.html">Contact</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <section>
+    <div class="section-title">About</div>
+    <div class="about-box">
+      <div class="about-content">
+        I’m <strong>Ahmed Mohamed</strong>, a Computer Engineering student at Modern Academy for Engineering and Technology with a strong passion for cybersecurity, ethical hacking, and advanced networking. I specialize in offensive security and red teaming, blending academic knowledge with hands-on experience.
+
+        <div class="info-list">
+          <p><strong>Birthday:</strong> 25 Mar 2004 (21 years old)</p>
+          <p><strong>City:</strong> EGYPT, Cairo</p>
+          <p><strong>Email:</strong> www.ahmedamx2@gmail.com</p>
+        </div>
+
+        <div class="interests">
+          <p><strong>Interests:</strong></p>
+          <ul>
+            <li>Ethical hacking / Penetration testing</li>
+            <li>Incident response</li>
+            <li>Business communication</li>
+            <li>Operating systems</li>
+            <li>IT Networks and protocols</li>
+            <li>Scripting and development</li>
+            <li>Security governance / risk assessment</li>
+            <li>Project management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
